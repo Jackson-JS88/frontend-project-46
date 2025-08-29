@@ -26,4 +26,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test -- --coverage
-   
+    - name: SonarQube Scan
+      run: npx sonarqube-scanner
+      env: 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
