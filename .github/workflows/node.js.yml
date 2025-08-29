@@ -28,5 +28,5 @@ jobs:
     - run: npm test -- --coverage
     - name: SonarQube Scan
       run: npx sonarqube-scanner -Dsonar.organization=jackson-js88
-      env: 
+      env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
