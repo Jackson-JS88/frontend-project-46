@@ -3,3 +3,5 @@
 
 ### Asciinema  genDiff():
 https://asciinema.org/a/GyG28sX3sQVCKvygRQrofepqL
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Jackson-JS88_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Jackson-JS88_frontend-project-46)

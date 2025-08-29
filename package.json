@@ -18,7 +18,7 @@
     "gendiff": "./gendiff.js"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "test:watch": "jest --watch"
   },
