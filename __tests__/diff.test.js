@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import buildDiff from '../src/diff.js';
+import genDiff from '../src/diff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +13,7 @@ test('compare JSON files from fixtures', () => {
   const data1 = readFixture('filepath1.json');
   const data2 = readFixture('filepath2.json');
   
-  const result = buildDiff(data1, data2);
+  const result = genDiff(data1, data2);
   
   expect(result).toContain('- follow: false');
   expect(result).toContain('- proxy: 123.234.53.22');
@@ -27,7 +27,7 @@ test('compare user files from fixtures', () => {
   const data1 = readFixture('user1.json');
   const data2 = readFixture('user2.json');
   
-  const result = buildDiff(data1, data2);
+  const result = genDiff(data1, data2);
   
   expect(result).toContain('  name: Evgenii');
   expect(result).toContain('  age: 37');
@@ -39,7 +39,7 @@ test('compare with numeric values', () => {
   const obj1 = { a: 1, b: 2, c: 3 };
   const obj2 = { a: 1, b: 20, d: 4 };
   
-  const result = buildDiff(obj1, obj2);
+  const result = genDiff(obj1, obj2);
   
   expect(result).toContain('  a: 1');
   expect(result).toContain('- b: 2');
@@ -52,7 +52,7 @@ test('compare with boolean values', () => {
   const obj1 = { active: true, verified: false };
   const obj2 = { active: false, registered: true };
   
-  const result = buildDiff(obj1, obj2);
+  const result = genDiff(obj1, obj2);
   
   expect(result).toContain('- active: true');
   expect(result).toContain('+ active: false');
@@ -64,7 +64,7 @@ test('compare empty objects', () => {
   const obj1 = {};
   const obj2 = {};
   
-  const result = buildDiff(obj1, obj2);
+  const result = genDiff(obj1, obj2);
   
   console.log('Result for empty objects:', JSON.stringify(result));
   expect(result).toContain('{');
@@ -75,7 +75,7 @@ test('compare with null values', () => {
   const obj1 = { value: null, data: 'test' };
   const obj2 = { value: 'not null', data: 'test' };
   
-  const result = buildDiff(obj1, obj2);
+  const result = genDiff(obj1, obj2);
   
   expect(result).toContain('- value: null');
   expect(result).toContain('+ value: not null');
