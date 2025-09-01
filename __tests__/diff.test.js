@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/diff.js';
+import { parse, getFormat } from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,4 +49,12 @@ test('compare user files from fixtures', () => {
   expect(result).toContain('  age: 37');
   expect(result).toContain('- city: Volgograd');
   expect(result).toContain('+ country: Russia');
+});
+
+test('parse with unsupported format', () => {
+  expect(() => parse('content', 'xml')).toThrow('Unsupported format: xml');
+});
+
+test('getFormat with unsupported extension', () => {
+  expect(() => getFormat('file.txt')).toThrow('Unsupported file extension: .txt');
 });
