@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1756568523058" clover="3.2.0">
-  <project timestamp="1756568523058" name="All files">
-    <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2" elements="21" coveredelements="21" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+<coverage generated="1756757949484" clover="3.2.0">
+  <project timestamp="1756757949484" name="All files">
+    <metrics statements="35" coveredstatements="33" conditionals="18" coveredconditionals="14" methods="5" coveredmethods="5" elements="58" coveredelements="52" complexity="0" loc="35" ncloc="35" packages="1" files="2" classes="2"/>
     <file name="diff.js" path="/Users/evgeniy/Documents/JavaScript/frontend-project-46/src/diff.js">
-      <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="6" type="stmt"/>
-      <line num="5" count="6" type="stmt"/>
-      <line num="7" count="6" type="stmt"/>
-      <line num="9" count="6" type="stmt"/>
-      <line num="10" count="18" type="cond" truecount="2" falsecount="0"/>
-      <line num="11" count="5" type="stmt"/>
-      <line num="13" count="13" type="cond" truecount="2" falsecount="0"/>
+      <metrics statements="19" coveredstatements="19" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="4" type="stmt"/>
+      <line num="6" count="4" type="stmt"/>
+      <line num="8" count="4" type="stmt"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
       <line num="14" count="4" type="stmt"/>
-      <line num="16" count="9" type="cond" truecount="2" falsecount="0"/>
-      <line num="17" count="4" type="stmt"/>
-      <line num="19" count="5" type="stmt"/>
-      <line num="21" count="6" type="stmt"/>
+      <line num="15" count="4" type="stmt"/>
+      <line num="16" count="4" type="stmt"/>
+      <line num="18" count="4" type="stmt"/>
+      <line num="19" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="20" count="7" type="stmt"/>
+      <line num="22" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="4" type="stmt"/>
+      <line num="25" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="3" type="stmt"/>
+      <line num="28" count="5" type="stmt"/>
+      <line num="31" count="4" type="stmt"/>
+    </file>
+    <file name="parsers.js" path="/Users/evgeniy/Documents/JavaScript/frontend-project-46/src/parsers.js">
+      <metrics statements="16" coveredstatements="14" conditionals="12" coveredconditionals="8" methods="3" coveredmethods="3"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="8" type="stmt"/>
+      <line num="7" count="8" type="stmt"/>
+      <line num="8" count="8" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="15" count="3" type="cond" truecount="2" falsecount="2"/>
+      <line num="16" count="3" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="22" count="8" type="stmt"/>
+      <line num="23" count="8" type="stmt"/>
+      <line num="24" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="25" count="3" type="cond" truecount="2" falsecount="2"/>
+      <line num="26" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>
