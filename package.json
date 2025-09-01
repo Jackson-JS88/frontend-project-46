@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",

@@ -1,9 +1,18 @@
 import _ from 'lodash';
+import { readFile, parse, getFormat } from './parsers.js';
 
-const genDiff = ( obj1, obj2 ) => {
+const genDiff = (filepath1, filepath2) => {
+  const format1 = getFormat(filepath1);
+  const format2 = getFormat(filepath2);
+  
+  const content1 = readFile(filepath1);
+  const content2 = readFile(filepath2);
+  
+  const obj1 = parse(content1, format1);
+  const obj2 = parse(content2, format2);
+
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
-
   const allKeys = _.sortBy(_.union(keys1, keys2));
 
   const difference = allKeys.map((key) => {
@@ -18,6 +27,7 @@ const genDiff = ( obj1, obj2 ) => {
     }
     return `    ${key}: ${obj1[key]}`;
   });
+  
   return `{\n${difference.join('\n')}\n}`;
 };
 
