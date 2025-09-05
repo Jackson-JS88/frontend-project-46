@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/diff.js';
@@ -9,52 +8,58 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-test('compare JSON files from fixtures', () => {
-  const result = genDiff(getFixturePath('filepath1.json'), getFixturePath('filepath2.json'));
-  
-  expect(result).toContain('- follow: false');
-  expect(result).toContain('- proxy: 123.234.53.22');
-  expect(result).toContain('- timeout: 50');
-  expect(result).toContain('+ timeout: 20');
-  expect(result).toContain('+ verbose: true');
-  expect(result).toContain('  host: hexlet.io');
-});
+describe('gendiff', () => {
+  test('parse with unsupported format', () => {
+    expect(() => parse('content', 'xml')).toThrow('Unsupported format: xml');
+  });
 
-test('compare YAML files', () => {
-  const result = genDiff(getFixturePath('filepath1.yml'), getFixturePath('filepath2.yml'));
-  
-  expect(result).toContain('- follow: false');
-  expect(result).toContain('- proxy: 123.234.53.22');
-  expect(result).toContain('- timeout: 50');
-  expect(result).toContain('+ timeout: 20');
-  expect(result).toContain('+ verbose: true');
-  expect(result).toContain('  host: hexlet.io');
-});
+  test('getFormat with unsupported extension', () => {
+    expect(() => getFormat('file.txt')).toThrow('Unsupported file extension: .txt');
+  });
 
-test('compare mixed JSON and YAML files', () => {
-  const result = genDiff(getFixturePath('filepath1.json'), getFixturePath('filepath2.yml'));
-  
-  expect(result).toContain('- follow: false');
-  expect(result).toContain('- proxy: 123.234.53.22');
-  expect(result).toContain('- timeout: 50');
-  expect(result).toContain('+ timeout: 20');
-  expect(result).toContain('+ verbose: true');
-  expect(result).toContain('  host: hexlet.io');
-});
+  test('compare nested JSON structures', () => {
+    const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
 
-test('compare user files from fixtures', () => {
-  const result = genDiff(getFixturePath('user1.json'), getFixturePath('user2.json'));
-  
-  expect(result).toContain('  name: Evgenii');
-  expect(result).toContain('  age: 37');
-  expect(result).toContain('- city: Volgograd');
-  expect(result).toContain('+ country: Russia');
-});
+    expect(result).toMatch(/^\s*\+ follow: false$/m);
+    expect(result).toMatch(/^\s*  setting1: Value 1$/m);
+    expect(result).toMatch(/^\s*- setting2: 200$/m);
+    expect(result).toMatch(/^\s*- setting3: true$/m);
+    expect(result).toMatch(/^\s*\+ setting3: null$/m);
+    expect(result).toMatch(/^\s*\+ setting4: blah blah$/m);
+    expect(result).toMatch(/^\s*\+ setting5: {$/m);
+    expect(result).toMatch(/^\s*    key5: value5$/m);
 
-test('parse with unsupported format', () => {
-  expect(() => parse('content', 'xml')).toThrow('Unsupported format: xml');
-});
+    expect(result).toMatch(/^\s*  setting6: {$/m);
+    expect(result).toMatch(/^\s*    doge: {$/m);
+    expect(result).toMatch(/^\s*- wow:  $/m);
+    expect(result).toMatch(/^\s*\+ wow: so much$/m);
+    expect(result).toMatch(/^\s*    key: value$/m);
+    expect(result).toMatch(/^\s*\+ ops: vops$/m);
 
-test('getFormat with unsupported extension', () => {
-  expect(() => getFormat('file.txt')).toThrow('Unsupported file extension: .txt');
+    expect(result).toMatch(/^\s*- baz: bas$/m);
+    expect(result).toMatch(/^\s*\+ baz: bars$/m);
+    expect(result).toMatch(/^\s*  foo: bar$/m);
+    expect(result).toMatch(/^\s*- nest: {$/m);
+    expect(result).toMatch(/^\s*\+ nest: str$/m);
+
+    expect(result).toMatch(/^\s*- group2: {$/m);
+    expect(result).toMatch(/^\s*\+ group3: {$/m);
+  });
+
+  test('compare nested YAML structures', () => {
+    const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
+
+    expect(result).toMatch(/^\s*\+ follow: false$/m);
+    expect(result).toMatch(/^\s*- setting2: 200$/m);
+    expect(result).toMatch(/^\s*\+ setting4: blah blah$/m);
+    expect(result).toMatch(/^\s*- baz: bas$/m);
+    expect(result).toMatch(/^\s*\+ baz: bars$/m);
+  });
+
+  test('compare mixed JSON and YAML files', () => {
+    const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.yml'));
+
+    expect(result).toMatch(/^\s*\+ follow: false$/m);
+    expect(result).toMatch(/^\s*- setting2: 200$/m);
+  });
 });
