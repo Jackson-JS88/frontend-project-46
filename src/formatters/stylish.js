@@ -11,7 +11,7 @@ const stringify = (value, depth) => {
   if (!_.isObject(value) || value === null) {
     if (value === null) return 'null';
     if (typeof value === 'boolean') return String(value);
-    if (value === '') return ' ';
+    if (value === '') return '';
     return String(value);
   }
 

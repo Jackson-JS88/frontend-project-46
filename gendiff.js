@@ -16,8 +16,4 @@ program
     console.log(diff);
   });
 
-if (process.argv.length <= 2) {
-  program.help();
-} else {
-  program.parse(process.argv);
-}
+program.parse(process.argv);
