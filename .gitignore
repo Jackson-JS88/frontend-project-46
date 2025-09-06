@@ -5,3 +5,7 @@ coverage/
 *.xml
 *.info
 lcov-report/
+coverage/
+*.xml
+*.info
+lcov-report/
