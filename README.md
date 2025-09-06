@@ -9,5 +9,8 @@ https://asciinema.org/a/GyG28sX3sQVCKvygRQrofepqL
 ### Asciinema
 https://asciinema.org/a/l0uRqCGCapqJikigEvBMi50v6
 
-### Asciinema
+### Asciinema Stylish format
 https://asciinema.org/a/GlNIndq3cmyCNIer0gJQAiCzg
+
+### Asciinema Plain format
+https://asciinema.org/a/acB4XY5z6mrhuLCBIp5RzlMVR
