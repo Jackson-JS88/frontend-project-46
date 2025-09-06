@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { readFile, parse, getFormat } from './parsers.js';
-import formatStylish from './formatters/stylish.js';
+import getFormatter from './formatters/index.js';
 
 const buildTree = (obj1, obj2) => {
   const keys = _.union(_.keys(obj1), _.keys(obj2));
@@ -50,8 +50,9 @@ const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const obj2 = parse(content2, format2);
 
   const diffTree = buildTree(obj1, obj2);
+  const formatter = getFormatter(format); 
 
-  return formatStylish(diffTree);
+  return formatter(diffTree); 
 };
 
 export default genDiff;
