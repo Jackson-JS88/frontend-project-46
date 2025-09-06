@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const spacesCount = 4;
+const spacesCount = 2;
 
 const getIndent = (depth, withSign = false) => {
   const size = withSign ? (depth - 1) * spacesCount : depth * spacesCount;
