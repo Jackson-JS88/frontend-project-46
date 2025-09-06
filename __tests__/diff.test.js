@@ -2,6 +2,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/diff.js';
 import { parse, getFormat } from '../src/parsers.js';
+import formatPlain from '../src/formatters/plain.js';
+import formatStylish from '../src/formatters/stylish.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -121,5 +123,40 @@ describe('gendiff', () => {
     const parsed = JSON.parse(result);
     expect(Array.isArray(parsed)).toBe(true);
   });
-  
+
+  test('parsers handle invalid JSON', () => {
+    expect(() => parse('invalid json content', 'json')).toThrow();
+  });
+
+  test('plain formatter handles unknown node type', () => {
+    const invalidNode = { key: 'test', type: 'invalid_type' };
+    expect(() => formatPlain([invalidNode])).toThrow('Unknown node type: invalid_type');
+  });
+
+  test('stylish formatter handles unknown node type', () => {
+    const invalidNode = { key: 'test', type: 'invalid_type' };
+    expect(() => formatStylish([invalidNode])).toThrow('Unknown node type: invalid_type');
+  });
+
+  test('plain formatter stringify handles all value types', () => {
+    const testValues = [
+      { value: null, expected: 'null' },
+      { value: true, expected: 'true' },
+      { value: false, expected: 'false' },
+      { value: 42, expected: '42' },
+      { value: 'test', expected: "'test'" },
+      { value: '', expected: ' ' },
+      { value: { key: 'value' }, expected: '[complex value]' },
+      { value: [1, 2, 3], expected: '[complex value]' }
+    ];
+
+    testValues.forEach(({ value, expected }) => {
+      const result = genDiff(
+        getFixturePath('filepath1.json'),
+        getFixturePath('filepath2.json'),
+        'plain'
+      );
+      expect(result).toBeDefined();
+    });
+  });
 });
