@@ -16,8 +16,14 @@ program
     console.log(diff);
   });
 
-if (process.argv.length <= 2) {
-  program.outputHelp();
-} else {
-  program.parse(process.argv);
+const runCLI = () => {
+  if (process.argv.length <= 2) {
+    program.outputHelp();
+  } else {
+    program.parse(process.argv);
+  }
 };
+
+export default runCLI;
+
+runCLI();
