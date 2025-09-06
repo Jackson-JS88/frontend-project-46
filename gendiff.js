@@ -18,7 +18,6 @@ program
 
 if (process.argv.length <= 2) {
   program.outputHelp();
-  process.exit(0);
 } else {
   program.parse(process.argv);
 };
