@@ -33,7 +33,7 @@ describe('gendiff', () => {
 
     expect(result).toMatch(/^\s*  setting6: {$/m);
     expect(result).toMatch(/^\s*    doge: {$/m);
-    expect(result).toMatch(/^\s*- wow:  $/m);
+    expect(result).toMatch(/^\s*- wow: $/m);
     expect(result).toMatch(/^\s*\+ wow: so much$/m);
     expect(result).toMatch(/^\s*    key: value$/m);
     expect(result).toMatch(/^\s*\+ ops: vops$/m);
