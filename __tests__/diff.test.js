@@ -90,5 +90,35 @@ describe('gendiff', () => {
   test('unknown format throws error', () => {
     expect(() => genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'unknown'))
       .toThrow('Unknown format: unknown');
-  })
+  });
+
+  test('json format returns valid JSON string', () => {
+    const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
+    
+    expect(() => JSON.parse(result)).not.toThrow();
+    
+    const parsed = JSON.parse(result);
+
+    expect(Array.isArray(parsed)).toBe(true);
+    expect(parsed[0]).toHaveProperty('key');
+    expect(parsed[0]).toHaveProperty('type');
+  });
+
+  test('json format contains all necessary properties', () => {
+    const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
+    const parsed = JSON.parse(result);
+    
+    const node = parsed.find(n => n.key === 'common');
+    expect(node).toBeDefined();
+    expect(node).toHaveProperty('type');
+    expect(node).toHaveProperty('children');
+  });
+
+  test('json format with YAML files', () => {
+    const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json');
+    
+    expect(() => JSON.parse(result)).not.toThrow();
+    const parsed = JSON.parse(result);
+    expect(Array.isArray(parsed)).toBe(true);
+  });
 });
