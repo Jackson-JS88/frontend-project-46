@@ -62,4 +62,33 @@ describe('gendiff', () => {
     expect(result).toMatch(/^\s*\+ follow: false$/m);
     expect(result).toMatch(/^\s*- setting2: 200$/m);
   });
+
+  test('plain format with JSON files', () => {
+    const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
+    
+    expect(result).toContain("Property 'common.follow' was added with value: false");
+    expect(result).toContain("Property 'common.setting2' was removed");
+    expect(result).toContain("Property 'common.setting3' was updated. From true to null");
+    expect(result).toContain("Property 'common.setting4' was added with value: 'blah blah'");
+    expect(result).toContain("Property 'common.setting5' was added with value: [complex value]");
+    expect(result).toContain("Property 'common.setting6.doge.wow' was updated. From '' to 'so much'");
+    expect(result).toContain("Property 'common.setting6.ops' was added with value: 'vops'");
+    expect(result).toContain("Property 'group1.baz' was updated. From 'bas' to 'bars'");
+    expect(result).toContain("Property 'group1.nest' was updated. From [complex value] to 'str'");
+    expect(result).toContain("Property 'group2' was removed");
+    expect(result).toContain("Property 'group3' was added with value: [complex value]");
+  });
+
+  test('plain format with YAML files', () => {
+    const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
+    
+    expect(result).toContain("Property 'common.follow' was added with value: false");
+    expect(result).toContain("Property 'common.setting2' was removed");
+    expect(result).toContain("Property 'common.setting3' was updated. From true to null");
+  });
+
+  test('unknown format throws error', () => {
+    expect(() => genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'unknown'))
+      .toThrow('Unknown format: unknown');
+  })
 });
