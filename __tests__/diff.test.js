@@ -121,4 +121,5 @@ describe('gendiff', () => {
     const parsed = JSON.parse(result);
     expect(Array.isArray(parsed)).toBe(true);
   });
+  
 });
