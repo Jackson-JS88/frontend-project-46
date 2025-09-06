@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-const spacesCount = 2;
-
 const getIndent = (depth, withSign = false) => {
-  const size = withSign ? (depth - 1) * spacesCount : depth * spacesCount;
-  return ' '.repeat(size);
+  if (withSign) {
+    return ' '.repeat((depth - 1) * 4 + 2);
+  }
+  return ' '.repeat(depth * 4);
 };
 
 const stringify = (value, depth) => {
