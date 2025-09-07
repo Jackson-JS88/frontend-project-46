@@ -2,19 +2,19 @@ const stringify = (value) => {
   if (value === null) {
     return 'null';
   }
-  
-  if (typeof value === 'object') {
-    return '[complex value]';
-  }
-  
+
   if (typeof value === 'string') {
     return `'${value}'`;
   }
-  
+
   if (typeof value === 'boolean') {
     return String(value);
   }
-  
+
+  if (typeof value === 'object') {
+    return '[complex value]';
+  }
+
   return String(value);
 };
 
