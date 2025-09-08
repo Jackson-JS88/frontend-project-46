@@ -4,14 +4,14 @@ const stringify = (value) => {
   }
 
   if (typeof value === 'string') {
-    return `'${value}'`;
+    return value === '' ? "' '" : `'${value}'`;
   }
 
-  if (typeof value === 'boolean') {
+  if (typeof value === 'boolean' || typeof value === 'number') {
     return String(value);
   }
 
-  if (typeof value === 'object') {
+  if (Array.isArray(value) || typeof value === 'object') {
     return '[complex value]';
   }
 
@@ -34,7 +34,7 @@ const formatNode = (node, path) => {
       return `Property '${currentPath}' was removed`;
     
     case 'changed':
-      return `Property '${currentPath}' was updated. From ${stringify(node.value)} to ${stringify(node.newValue)}`;
+      return `Property '${currentPath}' was updated. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`;
     
     case 'nested':
       return formatPlain(node.children, currentPath);

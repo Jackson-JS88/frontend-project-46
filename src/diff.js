@@ -30,7 +30,7 @@ const buildTree = (obj1, obj2) => {
       return {
         key,
         type: 'changed',
-        value: value1,
+        oldValue: value1,
         newValue: value2,
       };
     }
