@@ -2,25 +2,18 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Jackson-JS88/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Jackson-JS88/frontend-project-46/actions)",
-  "homepage": "https://github.com/Jackson-JS88/frontend-project-46#readme",
-  "bugs": {
-    "url": "https://github.com/Jackson-JS88/frontend-project-46/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jackson-JS88/frontend-project-46.git"
-  },
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "gendiff.js",
+  "main": "src/diff.js",
+  "exports": {
+    ".": "./src/diff.js"
+  },
   "bin": {
     "gendiff": "./gendiff.js"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint .",
-    "test:watch": "jest --watch"
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "dependencies": {
     "commander": "^14.0.0",

@@ -1,13 +1,16 @@
 const stringify = (value) => {
-  if (value === null) return 'null';
-  
+  if (value === null) {
+    return 'null';
+  }
+
   if (typeof value === 'string') {
     return value === '' ? "''" : `'${value}'`;
   }
 
-  if (typeof value === 'boolean') return String(value);
-  if (typeof value === 'number') return String(value);
-  
+  if (typeof value === 'boolean' || typeof value === 'number') {
+    return String(value);
+  }
+
   if (Array.isArray(value) || typeof value === 'object') {
     return '[complex value]';
   }
