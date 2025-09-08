@@ -19,7 +19,7 @@ const stringify = (value, depth) => {
 }
 
 const formatStylish = (diff, depth = 0) => {
-  const lines = diff.map((node) => {
+  const lines = diff.map(node => {
     const { key, type } = node
 
     switch (type) {

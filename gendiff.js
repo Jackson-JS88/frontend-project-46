@@ -19,7 +19,8 @@ program
 const runCLI = () => {
   if (process.argv.length <= 2) {
     program.outputHelp()
-  } else {
+  }
+  else {
     program.parse(process.argv)
   }
 }

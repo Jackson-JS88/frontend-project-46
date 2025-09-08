@@ -24,7 +24,8 @@ const parse = (content, format) => {
     if (format === 'json') return JSON.parse(content)
     if (format === 'yml' || format === 'yaml') return parseYAML(content)
     throw new Error(`Unsupported format: ${format}`)
-  } catch (error) {
+  }
+  catch (error) {
     throw new Error(`Parse error: ${error.message}`)
   }
 }
