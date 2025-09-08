@@ -10,8 +10,10 @@ const readFile = (filepath) => {
     path.resolve(process.cwd(), '..', '..', '__fixtures__', filepath),
   ]
 
-  for (const possiblePath of possiblePaths) {
-    if (fs.existsSync(possiblePath)) {
+  for (const possiblePath of possiblePaths) 
+  {
+    if (fs.existsSync(possiblePath)) 
+    {
       return fs.readFileSync(possiblePath, 'utf-8')
     }
   }
@@ -20,11 +22,14 @@ const readFile = (filepath) => {
 }
 
 const parse = (content, format) => {
-  try {
+  try 
+  {
     if (format === 'json') return JSON.parse(content)
     if (format === 'yml' || format === 'yaml') return parseYAML(content)
     throw new Error(`Unsupported format: ${format}`)
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     throw new Error(`Parse error: ${error.message}`)
   }
 }

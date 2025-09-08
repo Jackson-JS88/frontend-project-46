@@ -7,7 +7,7 @@ export default defineConfig([
   js.configs.recommended,
   {
     files: ['**/*.js'],
-    ignores: ['coverage/**'], // Игнорируем папку coverage
+    ignores: ['coverage/**'],
     languageOptions: {
       globals: {
         ...globals.node,
@@ -28,6 +28,9 @@ export default defineConfig([
       '@stylistic/no-trailing-spaces': 'error',
       '@stylistic/indent': ['error', 2],
       '@stylistic/eol-last': 'error',
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/space-in-parens': ['error', 'never'],
+      '@stylistic/brace-style': ['error', 'stroustrup'],
     },
   },
 ])

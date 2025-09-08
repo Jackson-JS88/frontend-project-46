@@ -150,7 +150,7 @@ describe('gendiff', () => {
       { value: [1, 2, 3], expected: '[complex value]' },
     ]
 
-    testValues.forEach(( ) => {
+    testValues.forEach(() => {
       const result = genDiff(
         getFixturePath('filepath1.json'),
         getFixturePath('filepath2.json'),
