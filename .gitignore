@@ -10,3 +10,4 @@ coverage/
 *.xml
 *.info
 lcov-report/
+package-lock.json
