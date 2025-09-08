@@ -4,9 +4,13 @@ import { parse as parseYAML } from 'yaml';
 
 const readFile = (filepath) => {
   let absolutePath = path.resolve(process.cwd(), filepath);
-
+  
   if (!fs.existsSync(absolutePath)) {
     absolutePath = path.resolve(process.cwd(), '__fixtures__', filepath);
+  }
+
+  if (!fs.existsSync(absolutePath)) {
+    absolutePath = path.resolve(process.cwd(), filepath);
   }
 
   if (!fs.existsSync(absolutePath)) {
