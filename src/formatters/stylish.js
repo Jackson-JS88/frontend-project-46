@@ -11,7 +11,7 @@ const stringify = (value, depth) => {
   if (typeof value !== 'object') return String(value)
 
   const entries = Object.entries(value)
-  const lines = entries.map(([key, val]) => {
+  const lines = entries.map((([key, val]) => {
     return `${getIndent(depth + 1)}${key}: ${stringify(val, depth + 1)}`
   })
 
@@ -19,7 +19,7 @@ const stringify = (value, depth) => {
 }
 
 const formatStylish = (diff, depth = 0) => {
-  const lines = diff.map(node => {
+  const lines = diff.map((node) => {
     const { key, type } = node
 
     switch (type) {

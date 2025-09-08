@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { parse as parseYAML } from 'yaml'
 
-const readFile = filepath => {
+const readFile = (filepath) => {
   const possiblePaths = [
     path.resolve(process.cwd(), filepath),
     path.resolve(process.cwd(), '__fixtures__', filepath),
@@ -30,7 +30,7 @@ const parse = (content, format) => {
   }
 }
 
-const getFormat = filename => {
+const getFormat = (filename) => {
   const ext = path.extname(String(filename)).toLowerCase()
   if (ext === '.json') return 'json'
   if (ext === '.yml' || ext === '.yaml') return 'yml'

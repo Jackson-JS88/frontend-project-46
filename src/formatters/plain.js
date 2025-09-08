@@ -1,4 +1,4 @@
-const stringify = value => {
+const stringify = (value) => {
   if (value === null) {
     return 'null'
   }
