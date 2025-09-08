@@ -2,6 +2,7 @@ node_modules/
 coverage/
 .DS_Store
 coverage/
+*.log
 *.xml
 *.info
 lcov-report/
