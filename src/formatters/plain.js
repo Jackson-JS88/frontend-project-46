@@ -1,4 +1,4 @@
-const stringify = (value) => {
+const stringify = value => {
   if (value === null) {
     return 'null'
   }
@@ -49,8 +49,8 @@ const formatNode = (node, path) => {
 
 const formatPlain = (diff, path = '') => {
   const lines = diff
-    .map((node) => formatNode(node, path))
-    .filter((line) => line !== null)
+    .map(node => formatNode(node, path))
+    .filter(line => line !== null)
 
   return lines.join('\n')
 }
