@@ -4,7 +4,7 @@ const stringify = (value) => {
   }
 
   if (typeof value === 'string') {
-    return value === '' ? "' '" : `'${value}'`;
+    return value === '' ? "''" : `'${value}'`;
   }
 
   if (typeof value === 'boolean' || typeof value === 'number') {
