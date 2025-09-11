@@ -21,20 +21,31 @@ const readFile = (filepath) => {
 
 const parse = (content, format) => {
   try {
-    if (format === 'json') return JSON.parse(content)
-    if (format === 'yml' || format === 'yaml') return parseYAML(content)
-    throw new Error(`Unsupported format: ${format}`)
-  }
-  catch (error) {
+    switch (format) {
+      case 'json':
+        return JSON.parse(content)
+      case 'yml':
+      case 'yaml':
+        return parseYAML(content)
+      default:
+        throw new Error(`Unsupported format: ${format}`)
+    }
+  } catch (error) {
     throw new Error(`Parse error: ${error.message}`)
   }
 }
 
 const getFormat = (filename) => {
   const ext = path.extname(String(filename)).toLowerCase()
-  if (ext === '.json') return 'json'
-  if (ext === '.yml' || ext === '.yaml') return 'yml'
-  throw new Error(`Unsupported file extension: ${ext}`)
+  switch (ext) {
+    case '.json':
+      return 'json'
+    case '.yml':
+    case '.yaml':
+      return 'yml'
+    default:
+      throw new Error(`Unsupported file extension: ${ext}`)
+  }
 }
 
 export { readFile, parse, getFormat }

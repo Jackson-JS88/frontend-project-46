@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Jackson-JS88/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Jackson-JS88/frontend-project-46/actions)",
   "type": "module",
-  "main": "src/diff.js",
+  "main": "src/index.js",
   "exports": {
-    ".": "./src/diff.js"
+    ".": "./src/index.js"
   },
   "bin": {
-    "gendiff": "./gendiff.js"
+    "gendiff": "./bin/gendiff.js"
   },
   "engines": {
     "node": ">=18.14.0 <=22.0.0"
