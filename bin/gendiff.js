@@ -14,8 +14,7 @@ program
   .action((filepath1, filepath2, options) => {
     const diff = genDiff(filepath1, filepath2, options.format)
     console.log(diff)
-  }
-)
+  })
 
 const runCLI = () => {
   if (process.argv.length <= 2) {
