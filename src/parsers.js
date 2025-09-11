@@ -15,7 +15,6 @@ const readFile = (filepath) => {
       return fs.readFileSync(possiblePath, 'utf-8')
     }
   }
-
   throw new Error(`File not found: ${filepath}. Tried: ${possiblePaths.join(', ')}`)
 }
 
@@ -30,7 +29,8 @@ const parse = (content, format) => {
       default:
         throw new Error(`Unsupported format: ${format}`)
     }
-  } catch (error) {
+  }
+  catch (error) {
     throw new Error(`Parse error: ${error.message}`)
   }
 }
