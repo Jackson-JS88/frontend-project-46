@@ -1,6 +1,6 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import genDiff from '../src/diff.js'
+import genDiff from '../src/index.js'
 import { parse, getFormat } from '../src/parsers.js'
 import formatPlain from '../src/formatters/plain.js'
 import formatStylish from '../src/formatters/stylish.js'
